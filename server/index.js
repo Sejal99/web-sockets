@@ -1,7 +1,8 @@
 import express from "express";
 import { Server } from "socket.io";
 import {createServer} from "http";
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import cors from 'cors'
 dotenv.config()
 const app=express();
 
@@ -12,9 +13,17 @@ const io=new Server(server,{
     cors:{
         origin:"http://localhost:5173",
         methods:["GET","POST"],
-        credentials:true
+        credentials:true,
+
     }
 })
+
+app.use(cors({
+    origin:"http://localhost:5173",
+    methods:["GET","POST"],
+    credentials:true,
+
+}))
 
 app.get("/",(req,res)=>{
     res.send('hello');
@@ -29,6 +38,6 @@ console.log("id",socket.id);
 })
 const PORT = process.env.PORT || 3002;
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

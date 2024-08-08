@@ -6,7 +6,11 @@ function App() {
 
   useEffect(()=>{
     socket.on("connect",()=>{
-      console.log("connected");
+      console.log("connected",socket.id);
+      socket.on("welcome",(s)=>{
+        console.log(s);
+        
+      })
       
     })
   },[])

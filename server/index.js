@@ -32,6 +32,7 @@ app.get("/", (req, res) => {
 io.on("connection", (socket) => {
   console.log("user connected");
   console.log("id", socket.id);
+  socket.emit("welcome","welcome to server")
 });
 const PORT = process.env.PORT || 3002;
 

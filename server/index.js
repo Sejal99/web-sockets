@@ -5,8 +5,9 @@ dotenv.config()
 const app=express();
 
 app.use(express.json());
-const server=new Server(app);
 
+const server=new Server(app);
+const io=new Server(server,{})
 
 const PORT = process.env.PORT || 3002;
 

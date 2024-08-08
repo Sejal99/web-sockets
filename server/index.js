@@ -8,7 +8,11 @@ const app=express();
 app.use(express.json());
 
 const server= createServer(app);
-const io=new Server(server)
+const io=new Server(server,{
+    cors:{
+        origin:"*"
+    }
+})
 
 app.get("/",(req,res)=>{
     res.send('hello');

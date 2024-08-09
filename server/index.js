@@ -33,7 +33,7 @@ io.on("connection", (socket) => {
   console.log("user connected");
   console.log("id", socket.id);
   socket.emit("welcome","welcome to server")//sends to all the active servers
-
+  socket.broadcast.emit("welcome", `${socket.id} User joined the server`) //sends to all servers except this server id
 });
 const PORT = process.env.PORT || 3002;
 

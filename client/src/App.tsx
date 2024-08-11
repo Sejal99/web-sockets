@@ -7,10 +7,15 @@ function App() {
   useEffect(() => {
     socket.on("connect", () => {
       console.log("connected", socket.id);
-      socket.on("welcome", (s) => {
-        console.log(s);
-      });
+      
     });
+    socket.on("welcome", (s) => {
+      console.log(s);
+    });
+
+    return()=>{
+      socket.disconnect();
+    }
   }, []);
   return (
     <div>
